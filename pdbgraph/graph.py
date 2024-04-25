@@ -18,26 +18,15 @@ def construct_torch_graph(atoms, bonds):
     # Create edge_index tensor
     edge_index = []
     for bond in bonds:
-        atom1_index = next
-        (
+        atom1_coord = tuple(bond['atom1_coord'])
+        atom1_index = next(
             i for i, atom_info in enumerate(atoms)
-            if tuple(atom_info['coord']) == tuple(bond['atom1_coord'])
+            if tuple(atom_info['coord']) == atom1_coord
         )
-        atom2_index = next
-        (
+        atom2_coord = tuple(bond['atom2_coord'])
+        atom2_index = next(
             i for i, atom_info in enumerate(atoms)
-            if tuple(atom_info['coord']) == tuple(bond['atom2_coord'])
-        )
-
-        atom1_index = next
-        (
-            i for i, atom_info in enumerate(atoms)
-            if tuple(atom_info['coord']) == tuple(bond['atom1_coord'])
-        )
-        atom2_index = next
-        (
-            i for i, atom_info in enumerate(atoms)
-            if tuple(atom_info['coord']) == tuple(bond['atom2_coord'])
+            if tuple(atom_info['coord']) == atom2_coord
         )
         edge_index.append([atom1_index, atom2_index])
 
