@@ -16,4 +16,3 @@ setup(
         'torch_geometric'
     ],
 )
-

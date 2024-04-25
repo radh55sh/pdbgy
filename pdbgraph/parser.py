@@ -1,5 +1,6 @@
 from Bio.PDB import PDBParser
 
+
 def parse_pdb_file(pdb_file_path):
     """
     Parse a PDB file and extract atom and bond information.
@@ -12,7 +13,6 @@ def parse_pdb_file(pdb_file_path):
     """
     parser = PDBParser()
     structure = parser.get_structure("protein", pdb_file_path)
-    
     atoms = []
     bonds = []
 
@@ -25,8 +25,7 @@ def parse_pdb_file(pdb_file_path):
                         'id': atom.get_id(),
                         'name': atom.get_name(),
                         'coord': atom.get_coord(),
-                        # Add any other relevant information you want to extract
-                    }
+                        }
                     atoms.append(atom_info)
 
                     # Find bonds between atoms
@@ -39,8 +38,7 @@ def parse_pdb_file(pdb_file_path):
                                 'atom2_id': neighbor.get_id(),
                                 'atom2_coord': neighbor.get_coord(),
                                 'distance': atom - neighbor,
-                                # Add any other relevant information you want to extract
-                            }
+                                }
                             bonds.append(bond_info)
 
     return atoms, bonds
