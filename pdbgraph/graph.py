@@ -1,4 +1,5 @@
 import torch
+import numpy as np
 from torch_geometric.data import Data
 
 
@@ -14,7 +15,8 @@ def construct_torch_graph(atoms, bonds):
         Data: A torch geometric Data object representing the graph.
     """
     # Create node features (coordinates) tensor
-    x = torch.tensor([atom['coord'] for atom in atoms], dtype=torch.float)
+    coords = np.array([atom['coord'] for atom in atoms], dtype=np.float32)
+    x = torch.tensor(coords, dtype=torch.float)
     # Create edge_index tensor
     edge_index = []
     for bond in bonds:

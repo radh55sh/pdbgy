@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='my_package',
+    name='pdbgraph',
     version='0.1.0',
     author='Radheesh Sharma',
     author_email='rmeda@andrew.cmu.edu',
