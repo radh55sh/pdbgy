@@ -1,45 +1,22 @@
 import pytest
 from pdbgraph import parse_pdb_file, construct_torch_graph
 
-# Define the path to a sample PDB file for testing
-SAMPLE_PDB_FILE = "sample.pdb"
-
 
 @pytest.fixture(scope="module")
 def sample_pdb_file(tmpdir_factory):
-    """Create a sample PDB file for testing."""
-    tmpdir = tmpdir_factory.mktemp("data")
-    pdb_content = """
-    # Sample PDB content
-    ATOM      1  N   ASP A   1       3.373  -4.042   1.886  1.00 20.00           N # noqa: E501
-    ATOM      3  C   ASP A   1       5.671  -3.727   2.302  1.00 20.00           C
-    ATOM      2  CA  ASP A   1       4.658  -4.682   1.669  1.00 20.00           C
-    ATOM      4  O   ASP A   1       5.285  -2.545   2.254  1.00 20.00           O
-    ATOM      5  CB  ASP A   1       4.476  -5.989   0.862  1.00 20.00           C
-    ATOM      6  CG  ASP A   1       5.654  -6.823   1.350  1.00 20.00           C
-    ATOM      7  OD1 ASP A   1       6.593  -6.258   2.003  1.00 20.00           O
-    ATOM      8  OD2 ASP A   1       5.682  -8.077   1.067  1.00 20.00           O
-    ATOM      9  N   ILE A   2       6.882  -4.204   2.815  1.00 20.00           N
-    ATOM     10  CA  ILE A   2       7.996  -3.408   3.383  1.00 20.00           C
-    ATOM     11  C   ILE A   2       7.674  -2.036   3.945  1.00 20.00           C
-    ATOM     12  O   ILE A   2       6.568  -1.614   4.302  1.00 20.00           O
-    ATOM     13  CB  ILE A   2       9.194  -4.300   3.746  1.00 20.00           C
-    ATOM     14  CG1 ILE A   2      10.350  -3.452   4.256  1.00 20.00           C
-    ATOM     15  CG2 ILE A   2       9.591  -5.645   3.142  1.00 20.00           C
-    TER
     """
-    pdb_path = tmpdir.join(SAMPLE_PDB_FILE)
-    with open(pdb_path, "w") as f:
-        f.write(pdb_content)
-    return pdb_path
+    Returns:
+    str: The path to the sample PDB file.
+    """
+    return "tests/test.pdb"
 
 
 def test_parse_pdb_file(sample_pdb_file):
     """Test the parse_pdb_file function."""
     atoms, bonds = parse_pdb_file(sample_pdb_file)
     # Perform assertions to verify the output
-    assert len(atoms) == 15  # Check the number of atoms
-    assert len(bonds) == 14  # Check the number of bonds
+    assert len(atoms) == 114  # Check the number of atoms
+    assert len(bonds) == 208  # Check the number of bonds
 
 
 def test_construct_torch_graph():
