@@ -16,8 +16,7 @@ You can install `pdbgraph` via pip:
 ## Usage
 
 ```python
-from pdbgraph.parser import parse_pdb_file
-from pdbgraph.graph import construct_torch_graph
+from pdbgraph import parse_pdb_file, construct_graph
 
 # Parse a PDB file and extract atom and bond information
 atoms, bonds = parse_pdb_file("path/to/your/pdb/file.pdb")
