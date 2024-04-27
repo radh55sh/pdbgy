@@ -1,3 +1,5 @@
+'''Module for parsing PDB files and extracting atom and bond information.'''
+
 from Bio.PDB import PDBParser
 
 

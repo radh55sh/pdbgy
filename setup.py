@@ -1,3 +1,4 @@
+''' Setup script for pdbgraph package.'''
 from setuptools import setup, find_packages
 
 setup(
